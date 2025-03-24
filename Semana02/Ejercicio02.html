@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        Ejercicio 2:
+        Conversor de Temperatura: Celsius a Fahrenheit
+        Desarrolla una página web interactiva que permita a los usuarios convertir una
+        temperatura proporcionada en grados Celsius a su equivalente en grados Fahrenheit.
+    -->
+
+    <h2>Conversor de Temperatura</h2>
+    <label for="celsius">Temperatura en Celsius (°C):</label>
+    <input type="number" id="celsius" placeholder="Ingrese la temperatura" oninput="convertir()">
+
+    <div id="resultado"></div>
+
+    <script>
+        /*
+            Función para convertir grados Celsius a Fahrenheit automáticamente
+            Fórmula: F = (C * 9/5) + 32
+        */
+        function convertir() {
+            // Obtener el valor ingresado
+            let celsius = document.getElementById("celsius").value;
+
+            // Verificar si el campo está vacío
+            if (celsius === "") {
+                document.getElementById("resultado").innerText = "";
+                return;
+            }
+
+            // Convertir a número y aplicar la fórmula
+            let fahrenheit = (parseFloat(celsius) * 9/5) + 32;
+
+            // Mostrar resultado en tiempo real
+            document.getElementById("resultado").innerText = "Equivalente en Fahrenheit: " + fahrenheit.toFixed(1) + "°F";
+        }
+    </script>
+
+</body>
+</html>

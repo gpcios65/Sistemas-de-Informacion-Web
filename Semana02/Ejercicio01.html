@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Guaraníes a Dólares</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 5px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        Ejercicio 1:
+        Desarrolla una página web que permita a los usuarios convertir un monto
+        en Guaraníes (Gs) a su equivalente en Dólares (USD) usando un valor de
+        cambio ingresado por el usuario.
+    -->
+
+    <h2>Conversor de Guaraníes a Dólares</h2>
+    <label for="guaranies">Monto en Guaraníes (Gs):</label>
+    <input type="number" id="guaranies" placeholder="Ingrese el monto">
+
+    <br>
+
+    <label for="cambio">Tasa de cambio (1 USD = ? Gs):</label>
+    <input type="number" id="cambio" placeholder="Ingrese la tasa">
+
+    <br>
+
+    <button onclick="convertir()">Convertir</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        /*
+            Función para convertir Guaraníes a Dólares según la tasa de cambio ingresada
+        */
+        function convertir() {
+            // Obtener valores ingresados
+            let guaranies = document.getElementById("guaranies").value;
+            let cambio = document.getElementById("cambio").value;
+
+            // Verificar si los valores son correctos
+            if (guaranies === "" || cambio === "" || guaranies <= 0 || cambio <= 0) {
+                document.getElementById("resultado").innerText = "Ingrese valores válidos.";
+                return;
+            }
+
+            // Realizar conversión
+            let dolares = guaranies / cambio;
+
+            // Mostrar resultado con dos decimales
+            document.getElementById("resultado").innerText = "Equivalente en USD: $" + dolares.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

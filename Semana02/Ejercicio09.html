@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Año Bisiesto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0288d1;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin: 10px;
+            color: #444;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #0288d1;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0277bd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Comprobar Año Bisiesto</h1>
+
+    <!--
+    Hacer una página que, ingresando un año pueda determinar si corresponde a un año bisiesto,
+    alertar al usuario del resultado.
+    -->
+
+    <!-- Formulario para ingresar el año -->
+    <label for="anio">Ingrese un año:</label>
+    <input type="number" id="anio" placeholder="Ejemplo: 2024" min="1">
+
+    <button onclick="comprobarBisiesto()">Comprobar Año</button>
+
+    <script>
+        function comprobarBisiesto() {
+            // Obtiene el año ingresado por el usuario
+            const anio = parseInt(document.getElementById('anio').value);
+
+            // Valida que el año sea un número válido
+            if (isNaN(anio) || anio <= 0) {
+                alert("Por favor ingrese un año válido.");
+                return;
+            }
+
+            // Lógica para determinar si el año es bisiesto
+            if ((anio % 4 === 0 && anio % 100 !== 0) || (anio % 400 === 0)) {
+                alert(`${anio} es un año bisiesto.`);
+            } else {
+                alert(`${anio} no es un año bisiesto.`);
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo Personalizado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f0f8ff;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #mensaje {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        Ejercicio 4:
+        Página web interactiva que permite a los usuarios ingresar su nombre, apellido y edad.
+        Debe generar un mensaje de bienvenida personalizado concatenando los valores ingresados.
+    -->
+
+    <div class="container">
+        <h2>Bienvenido a la Facultad Politécnica de la UNA</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" placeholder="Ingrese su nombre">
+        <br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" placeholder="Ingrese su apellido">
+        <br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" placeholder="Ingrese su edad">
+        <br>
+
+        <button onclick="mostrarMensaje()">Saludar</button>
+
+        <div id="mensaje"></div>
+    </div>
+
+    <script>
+        /*
+            Función para generar un saludo personalizado con el nombre, apellido y edad ingresados.
+        */
+        function mostrarMensaje() {
+            let nombre = document.getElementById("nombre").value.trim();
+            let apellido = document.getElementById("apellido").value.trim();
+            let edad = document.getElementById("edad").value.trim();
+
+            // Verifica si los campos están vacíos
+            if (nombre === "" || apellido === "" || edad === "") {
+                document.getElementById("mensaje").innerText = "Por favor, complete todos los campos.";
+                return;
+            }
+
+            // Convertie edad a número y validar
+            edad = parseInt(edad);
+            if (isNaN(edad) || edad <= 0) {
+                document.getElementById("mensaje").innerText = "Ingrese una edad válida.";
+                return;
+            }
+
+            // Muestra mensaje personalizado
+            document.getElementById("mensaje").innerText = `¡Hola ${nombre} ${apellido}! Tienes ${edad} años. Bienvenido a nuestra casa de estudio.`;
+        }
+    </script>
+
+</body>
+</html>
