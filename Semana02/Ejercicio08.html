@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Propina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6a1b9a;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin: 10px;
+            color: #444;
+        }
+
+        input[type="number"], input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #6a1b9a;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #8e24aa;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Programa calcula la propina</h1>
+
+    <!--
+    Hacer una página que, ingresando un monto de dinero que represente el gasto total de la cuenta en un restaurante y 
+    posteriormente ingresando un número de porcentaje, imprima el valor de la propina.
+    -->
+
+    <!-- Formulario para ingresar el monto y porcentaje -->
+    <label for="montoCuenta">Ingrese el monto de la cuenta (en Gs.):</label>
+    <input type="number" id="montoCuenta" placeholder="Monto total de la cuenta" step="0.01">
+
+    <label for="porcentajePropina">Ingrese el porcentaje de propina (%):</label>
+    <input type="number" id="porcentajePropina" placeholder="Porcentaje de propina" step="0.1">
+
+    <button onclick="calcularPropina()">Calcular Propina</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularPropina() {
+            // Obtiene los valores ingresados por el usuario
+            const montoCuenta = parseFloat(document.getElementById('montoCuenta').value);
+            const porcentajePropina = parseFloat(document.getElementById('porcentajePropina').value);
+
+            // Valida que los valores sean números positivos
+            if (isNaN(montoCuenta) || montoCuenta <= 0 || isNaN(porcentajePropina) || porcentajePropina <= 0) {
+                document.getElementById('resultado').innerText = "Por favor ingrese valores válidos mayores que 0.";
+                return;
+            }
+
+            // Calcula la propina
+            const propina = (montoCuenta * porcentajePropina) / 100;
+
+            // Muestra el resultado
+            document.getElementById('resultado').innerText = `El valor de la propina es: Gs. ${propina.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>

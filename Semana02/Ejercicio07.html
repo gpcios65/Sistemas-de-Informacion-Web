@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Producto sin IVA</title>
+</head>
+<body>
+    <h1>Ingreso el precio del producto</h1>
+
+    <!--
+    Enunciado:
+    Hacer una página que, ingresando un monto de dinero que represente el costo de un producto incluyendo IVA, 
+    imprima el valor del mismo producto (sin IVA) y el valor del IVA (10%) en un mensaje.
+    -->
+
+    <!-- Formulario para ingresar el monto con IVA -->
+    <label for="montoConIVA">Ingrese el monto con IVA:</label>
+    <input type="number" id="montoConIVA" placeholder="Monto con IVA" step="0.01">
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            // Obtiene el monto ingresado y convertirlo a número flotante
+            const montoConIVA = parseFloat(document.getElementById('montoConIVA').value);
+
+            // Verifica si el valor ingresado es válido (número positivo)
+            if (isNaN(montoConIVA) || montoConIVA <= 0) {
+                document.getElementById('resultado').innerText = "Por favor ingrese un monto válido mayor que 0.";
+                return; // Terminar la función si el valor no es válido
+            }
+
+            // Calcula el IVA (10%)
+            const iva = 0.10;
+            const valorProductoSinIVA = montoConIVA / (1 + iva);
+            const valorIVA = montoConIVA - valorProductoSinIVA;
+
+            // Mostrar los resultados
+            document.getElementById('resultado').innerText = `Valor del producto sin IVA: ${valorProductoSinIVA.toFixed(2)}\nValor del IVA (10%): ${valorIVA.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
